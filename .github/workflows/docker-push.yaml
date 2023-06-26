@@ -24,4 +24,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: registry.us-west-1.aliyuncs.com/zhangjun/go-chatgpt-api:latest
+          tags: registry.us-west-1.aliyuncs.com/zhangjun/go-chatgpt-api:${{ github.run_number }}-$(date '+%Y%m%d%H%M%S')
