@@ -18,10 +18,14 @@ jobs:
 
       - name: Log in to ACR
         run: echo ${{ secrets.ACR_PASSWORD }} | docker login --username ${{ secrets.ACR_USERNAME }} --password-stdin registry.us-west-1.aliyuncs.com
-
+        
+      - name: Set image tag
+        id: set_tag
+        run: |
+          echo "::set-output name=tag::$(date '+%Y%m%d%H%M%S')"
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: registry.us-west-1.aliyuncs.com/zhangjun/go-chatgpt-api:${{ github.run_number }}-$(date '+%Y%m%d%H%M%S')
+          tags: registry.us-west-1.aliyuncs.com/zhangjun/go-chatgpt-api:${{ github.run_number }}-${{ steps.set_tag.outputs.tag }}
