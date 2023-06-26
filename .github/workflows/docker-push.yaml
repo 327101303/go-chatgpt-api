@@ -24,4 +24,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: registry.cn-hangzhou.aliyuncs.com/zhangjun/go-chatgpt-api:latest
+          tags: registry.us-west-1.aliyuncs.com/zhangjun/go-chatgpt-api:latest
